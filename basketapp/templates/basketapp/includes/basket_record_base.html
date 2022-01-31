@@ -1,0 +1,6 @@
+<img src="/media/{{ el_b.product.image }}" alt="{{ el_b.product.short_desc }}">
+<span class="product_name">{{ el_b.product.name|capfirst }}</span>
+<span class="product_price">{{ el_b.product.price }}&nbspруб</span>
+<input type="number" name="{{ el_b.pk }}" min="0" max="{{ el_b.product.quantity_p }}"
+       value="{{ el_b.quantity_p }}">
+<a href="{% url 'basketshop:remove' basket_pk=el_b.pk %}" class="btn btn-round">delete</a>

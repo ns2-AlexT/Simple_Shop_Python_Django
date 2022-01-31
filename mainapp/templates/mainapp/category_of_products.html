@@ -1,0 +1,37 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style-contact.css' %}">
+{% endblock %}
+
+{% block container %}
+    <div class="container_middle">
+        <h3 class="text_middle">Products from category {{ category.name|capfirst }}</h3>
+        <div class="p_all" style="text-align: center">
+            {% if product_t.has_previous %}
+                <a href="{% url 'mainshop:category' category.pk %}?page={{ product_t.previous_page_number }}"
+                   style="text-decoration: none"><
+                </a>
+            {% endif %}
+            <span class="current">page {{ product_t.number }} from {{ product_t.paginator.num_pages }}</span>
+            {% if product_t.has_next %}
+                <a href="{% url 'mainshop:category' category.pk %}?page={{ product_t.next_page_number }}"
+                style="text-decoration: none">>
+                </a>
+            {% endif %}
+        </div>
+        {% include 'mainapp/includes/menu_categories.html' %}
+        <div class="container_for_goods">
+            {% for el in product_t %}
+                <div class="block_of_good">
+                    <img class="good_img_" src="/media/{{ el.image }}" alt="{{ el.description }}">
+                    <h4 class="text_middle_h4"> {{ el.name }} </h4>
+                    <p class="p_all"> {{ el.description }} </p>
+                    <p class="p_all"> {{ el.price }} </p>
+                    <a class="top_buttion" href="{% url 'mainshop:page_of_product' el.pk %}">Buy now</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

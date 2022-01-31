@@ -1,0 +1,65 @@
+{% load static %}
+
+<ul class="header">
+    <li>
+        <a href="{% url 'mainshop:index' %}"
+           class={% if request.resolver_match.url_name == 'index' %}active;
+           style="filter: sepia(55%) drop-shadow(0 0 3px rgba(100,0,0,0.5))" {% endif %}>
+            <img src="{% static 'img/logo.svg' %}" alt="main">
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'mainshop:products' %}"
+           class={% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'category' %}
+               active;
+           style="filter: sepia(55%) drop-shadow(0 0 3px rgba(100,0,0,0.5))" {% endif %}>
+            <img src="{% static 'img/products.svg' %}" alt="products">
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'mainshop:contact' %}"
+           class={% if request.resolver_match.url_name == 'contact' %}active;
+           style="filter: sepia(55%) drop-shadow(0 0 3px rgba(100,0,0,0.5))" {% endif %}>
+            <img src="{% static 'img/contacts.svg' %}" alt="contacts">
+        </a>
+    </li>
+    <li>
+        {% if user.is_authenticated %}
+            <a href="{% url 'basketshop:index' %}">
+                <img src="{% static 'img/basket.svg' %}" alt="basket">
+            </a>
+            </li>
+            <li>
+            <a href="{% url 'authapp:updating' %}" class="p_all" style="text-decoration: none">
+                {#                <img src="/media/{{ user.ava }}" alt="avatar">#}
+                User: {{ user.first_name|default:'USER'|capfirst }}
+            </a>
+            <br>
+            <a href="{% url 'basketshop:index' %}" class="p_all" style="text-decoration: none">
+                <span>
+                Goods: {{ user.basket_c }}
+                Total coast: {{ user.basket_p }}
+                </span>
+            </a>
+        {% endif %}
+    <li>
+        {% if user.is_authenticated %}
+            <a href="{% url 'authshop:logout' %}" title="LogOut">
+                <img src="{% static 'img/out.svg' %}" alt="LogOut">
+            </a>
+        {% else %}
+            <a href="{% url 'authshop:login' %}" title="LogIn">
+                <img src="{% static 'img/in.svg' %}" alt="LogIn">
+            </a>
+        {% endif %}
+            {% if user.is_superuser %}
+            <li>
+                <a href="{% url 'adminshop:index' %}" class="p_all" style="text-decoration: none"
+                   title="Admin of superUser">
+                    ADM_Room
+                </a>
+            </li>
+        {% endif %}
+    </li>
+    {#доделать красоту ?#}
+</ul>

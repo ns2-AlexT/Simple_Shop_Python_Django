@@ -1,0 +1,36 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style-contact.css' %}">
+{% endblock %}
+
+{% block container %}
+    <div class="container_middle">
+        <h3 class="text_middle">Product of the day</h3>
+        {% include 'mainapp/includes/menu_categories.html' %}
+        <div class="container_for_goods" style="justify-content: center">
+            <div class="block_of_good">
+                <img class="good_img_" src="/media/{{ s_product.image }}" alt="{{ s_product.image }}">
+                <h4 class="text_middle_h4">{{ s_product.name }}</h4>
+                <p class="p_all">{{ s_product.price }}</p>
+                <p class="p_all">{{ s_product.description }}</p>
+                <a class="top_buttion" href="{% url 'mainshop:page_of_product' s_product.pk %}">SALE! Buy now!</a>
+            </div>
+        </div>
+    </div>
+    <div class="container_middle">
+        <h3 class="text_middle">Products the same categories</h3>
+        <div class="container_for_goods">
+            {% for same_products in same_product %}
+                <div class="block_of_good">
+                    <img class="good_img_" src="/media/{{ same_products.image }}" alt="{{ s_product.image }}">
+                    <p class="text_middle_h4"> {{ same_products.name }} </p>
+                    <p class="p_all">{{ same_products.price }}</p>
+                    <p class="p_all">{{ same_products.description }}</p>
+                    <a class="top_buttion" href="{% url 'mainshop:page_of_product' same_products.pk %}">Buy now!</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

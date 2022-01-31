@@ -1,0 +1,25 @@
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+<ul class="header" style="justify-content: space-around">
+    <li>
+        <a href="{% url 'mainshop:index' %}">main page</a>
+    </li>
+    <li>
+        <a href="{% url 'adminshop:index' %}">users</a>
+    </li>
+    <li>
+        <a href="{% url 'adminshop:categories' %}">categories
+            {% if category %}
+                : {{ category.name }}
+                <a class="new_product btn btn-default"
+                   href={% url 'adminshop:cat_product_create' category.pk %}>new product</a>
+            {% elif object_list %}
+                <a href="{% url 'adminshop:cat_create' %}" class="btn btn-default">new category</a>
+            {% endif %}
+        </a>
+    </li>
+</ul>

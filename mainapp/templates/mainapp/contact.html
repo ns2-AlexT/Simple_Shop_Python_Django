@@ -1,0 +1,59 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style-contact.css' %}">
+{% endblock %}
+
+{% block container-contact-top %}
+    <div class="container_top_contacts">
+        <div class="header_title_contacts">
+            <h2 class="h2_contacts">Contact us</h2>
+            <p class="under_header_contacts">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore
+                et dolore magna aliqua. </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+    <div class="center">
+        <div class="center_of_contacts">
+            <div class="contacts">
+                <img src="{% static 'img/photo_1.jpg' %}" alt="photo" width="250px" height="250px">
+                {% for el in locations %}
+                    <div class="loc">
+                        <h4 class="h4_all">Address:</h4>
+                        <p class="p_all">{{ el.city }}</p>
+                        <h4 class="h4_all">Email:</h4>
+                        <p class="p_all">{{ el.email }}</p>
+                        <h4 class="h4_all">Phone:</h4>
+                        <p class="p_all">{{ el.phone }}</p>
+                        <br>
+                    </div>
+                {% endfor %}
+                <br>
+                <h4 class="h4_all">Online service</h4>
+                <ul>
+                    <li><a href="https://geekbrains.ru" target="_blank">Our site</a></li>
+                    <li><a href="mailto:support@geekbrains.ru">Write us</a></li>
+                </ul>
+            </div>
+            <form action="#">
+                <div class="message_us">
+                    <h4 class="h4_all">Send us message</h4>
+                    Full name: <input type="text" placeholder="your name"><br>
+                    Email: <input type="email" placeholder="email"><br>
+                    Message:<br>
+                    <textarea cols="30" rows="30"></textarea><br>
+                    <button class="button" type="submit">Send message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br><br>
+    <div class="map">
+        <script type="text/javascript" charset="utf-8" async
+                src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A3c1a151e236a799fb3a8be4943f5a07e7667b7a9b2533bf7eccb92c461b12713&amp;width=940px&amp;height=480px&amp;lang=ru_RU&amp;scroll=true"></script>
+    </div>
+{% endblock %}

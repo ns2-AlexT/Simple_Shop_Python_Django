@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="container_top">
+    <ul class="header_product">
+        <li>
+            <a href="{% url 'mainshop:category' 0 %}"
+               class={% if request.resolver_match.url_name == 'category' and request.resolver_match.kwargs.pk == 0 %}
+                   active;
+               style="filter: sepia(55%) drop-shadow(0 0 3px rgba(100,0,0,0.5));" {% endif %}>
+                All
+            </a>
+        </li>
+        {% for el in type_of_product %}
+            <li>
+                <a href="{% url 'mainshop:category' el.pk %}"
+                   class={% if request.resolver_match.url_name == 'category' and request.resolver_match.kwargs.pk == el.pk %}
+                               active;
+                   style="filter: sepia(55%) drop-shadow(0 0 3px rgba(100,0,0,0.5)); " {% endif %}>
+                    {{ el.name|capfirst }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

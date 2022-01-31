@@ -1,0 +1,39 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block container-index-header %}
+    <div class="container_top">
+        <div class="header_title">
+            <h1 class="h1_all">Bubble Gums From All Over The World</h1>
+            <p class="p_all top_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus,
+                aspernatur
+                eveniet!
+                Aut,
+                accusantium et qui
+                dignissimos voluptatum libero voluptas! Veritatis error nostrum corporis reprehenderit sed! Ipsum,
+                error
+                aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum molestiae corrupti at,
+                ipsum
+            </p>
+            <a class="top_buttion" href="{% url 'mainshop:products' %}">See Our Products</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+    <div class="container_project">
+        <h3 class="text_middle">Our Best Offers</h3>
+        <p class="text_project">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        <div class="project_pic_parent">
+            <div class="project_item new_marg">
+                <img class="project_pic" src="{% static 'img/project_photo_2.png' %}" alt="photo_2">
+                <p class="project_text_2">Offer № 2</p>
+            </div>
+            <div class="project_item">
+                <img class="project_pic" src="{% static 'img/project_photo_1.png' %}" alt="photo_3">
+                <p class="project_text_2">Offer № 3</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

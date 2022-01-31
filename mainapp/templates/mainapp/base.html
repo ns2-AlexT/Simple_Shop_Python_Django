@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title|default:'Bubbleshop'|capfirst }}</title>
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+    {% block js %}
+    {% endblock %}
+</head>
+
+<body>
+<div class="container_top">
+    <div class="top_conteiner_box">
+        {% include 'mainapp/includes/main_menu.html' %}
+        {% block container-index-header %}
+        {% endblock %}
+        {% block container-contact-top %}
+        {% endblock %}
+    </div>
+</div>
+{% block container %}
+{% endblock %}
+<div class="foot">
+    <div class="container">
+        <div class="footer_top">
+            <div class="foot_text">
+                <h3 class="foot_text_"> Intersted to work with our team?</h3>
+                <p class="foot_sub_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            </div>
+            <a class="foot_buttion" href="#">Let’s Talk</a>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="footer_bottom">
+            <ol class="footer_center_title">
+                <li class="foot_w">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </li>
+                <li class=" foot_w">
+                    +7-812-7313-4321
+                </li>
+                <li class="foot_w">
+                    hello.site@gmail.com
+                </li>
+            </ol>
+            <p class="foot_right">All rights recerved &copy; {% now "YM" %} </p>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style-contact.css' %}">
+{% endblock %}
+
+{% block container %}
+    <div class="container_middle">
+        {% include 'mainapp/includes/menu_categories.html' %}
+{#        <h3 class="text_middle">Product "{{ p_product.name }}"</h3>#}
+        <div class="container_for_goods" style="justify-content: center">
+            <div class="block_of_good">
+                <img class="good_img_" src="/media/{{ p_product.image }}" alt="{{ p_product.image }}">
+                <h4 class="text_middle_h4">{{ p_product.name }}</h4>
+                <p class="p_all">{{ p_product.price }}</p>
+                <p class="p_all">{{ p_product.description }}</p>
+                <a class="top_buttion" href="{% url 'basketshop:add' p_product.pk %}">Buy now!</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
